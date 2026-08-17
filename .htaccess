@@ -1,0 +1,32 @@
+Options -Indexes
+RewriteEngine On
+
+
+# =========================================================
+# CLEAN ADMIN URL
+# /storage/vastdb/admin -> admin.php
+# =========================================================
+
+RewriteRule ^admin/?$ admin.php [L]
+
+
+# =========================================================
+# ALLOW ONLY WHAT THE ADMIN PANEL NEEDS
+# =========================================================
+
+# Main admin page
+RewriteRule ^admin\.php$ - [L]
+
+# Admin PHP endpoints
+# Example: pages/login.php
+RewriteRule ^pages/[^/]+\.php$ - [L]
+
+# HTMX
+RewriteRule ^scripts/lib/htmx\.js$ - [L]
+
+
+# =========================================================
+# BLOCK EVERYTHING ELSE
+# =========================================================
+
+RewriteRule ^ - [F,L]

@@ -1,0 +1,11 @@
+{
+	"dbInfo":{
+	"ver": "0.1 early development",
+	"Author": "Vast Hosting - Yavuz Semih Dogandemir"
+	},
+	"Admin":{
+		"username": "vasthosting",
+		"password": "$2y$10$pqknrTzsxQzj3hgiw52BceppajTN.UGcMl0T1m.uvtPQwArY4n3FC"
+	},
+	"Key": "$2y$10$qtIO1r2KQ81K5euvIB8RpOgZ1/nsLmkfzilJevLdkaYWWKXT6th.i"
+}

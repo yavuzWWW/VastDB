@@ -1,0 +1,9 @@
+Options -Indexes
+
+RewriteEngine On
+
+# Allow PHP handler files
+RewriteRule ^[^/]+\.php$ - [L]
+
+# Block everything else
+RewriteRule ^ - [F,L]
