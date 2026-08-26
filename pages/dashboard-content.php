@@ -21,95 +21,145 @@ if ($tableName) {
 	body {
 		margin: 0;
 		min-height: 100%;
-		background: #0b0f19;
-		color: white;
-		font-family: Arial, Helvetica, sans-serif;
+		background: #070b12;
+		color: #dbe4f0;
+		font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 		overflow-x: auto;
+		-webkit-font-smoothing: antialiased;
 	}
 
 	.dashboard {
 		width: 100%;
 		min-height: 100vh;
-		padding: 20px;
+		padding: 24px;
 		overflow-x: auto;
+		background:
+			radial-gradient(circle at 50% -10%, rgba(37, 99, 235, 0.08), transparent 30%),
+			#070b12;
 	}
 
 	.forms {
 		display: grid;
 		grid-template-columns: repeat(4, minmax(220px, 1fr));
-		gap: 15px;
-		margin-bottom: 20px;
+		gap: 14px;
+		margin-bottom: 24px;
 	}
 
 	.card {
-		background: #111827;
-		border: 1px solid #263244;
-		border-radius: 10px;
-		padding: 15px;
+		background: linear-gradient(180deg, #111827 0%, #0e1521 100%);
+		border: 1px solid #243146;
+		border-radius: 9px;
+		padding: 16px;
 		min-width: 0;
+		box-shadow: 0 10px 28px rgba(0, 0, 0, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.018);
+		transition: border-color 120ms ease, transform 120ms ease, box-shadow 120ms ease;
+	}
+
+	.card:hover {
+		border-color: #31415a;
+		box-shadow: 0 12px 30px rgba(0, 0, 0, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.025);
 	}
 
 	.card h3 {
 		margin-top: 0;
 		margin-bottom: 14px;
-		font-size: 17px;
+		font-size: 13px;
+		font-weight: 650;
+		letter-spacing: 0.01em;
+		color: #f1f5f9;
 	}
 
 	input,
 	textarea,
 	select {
 		width: 100%;
-		padding: 9px;
-		margin-bottom: 10px;
-		background: #0b1220;
-		color: white;
-		border: 1px solid #334155;
+		padding: 9px 10px;
+		margin-bottom: 9px;
+		background: #080e18;
+		color: #e8eef7;
+		border: 1px solid #29384d;
 		border-radius: 6px;
 		outline: none;
-		font-size: 14px;
+		font-size: 12px;
+		font-family: inherit;
+		transition: border-color 120ms ease, box-shadow 120ms ease, background 120ms ease;
+	}
+
+	input,
+	select {
+		height: 36px;
+	}
+
+	input::placeholder,
+	textarea::placeholder {
+		color: #536177;
+	}
+
+	select {
+		cursor: pointer;
 	}
 
 	textarea {
-		min-height: 92px;
+		min-height: 90px;
 		resize: vertical;
+		line-height: 1.45;
+		font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+	}
+
+	input:hover,
+	textarea:hover,
+	select:hover {
+		border-color: #394a63;
 	}
 
 	input:focus,
 	textarea:focus,
 	select:focus {
-		border-color: #2563eb;
-		box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.18);
+		background: #0a111d;
+		border-color: #3b82f6;
+		box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.10);
 	}
 
 	button {
 		width: 100%;
-		padding: 10px;
+		min-height: 36px;
+		padding: 8px 12px;
 		background: #2563eb;
-		color: white;
-		border: none;
+		color: #ffffff;
+		border: 1px solid #3572ef;
 		border-radius: 6px;
 		cursor: pointer;
-		font-weight: bold;
+		font-size: 12px;
+		font-weight: 650;
+		font-family: inherit;
+		box-shadow: 0 4px 12px rgba(37, 99, 235, 0.12);
+		transition: background 120ms ease, border-color 120ms ease, transform 120ms ease;
 	}
 
 	button:hover {
-		background: #1d4ed8;
+		background: #2f6df0;
+		border-color: #4b82f3;
+	}
+
+	button:active {
+		transform: translateY(1px);
 	}
 
 	.danger-button {
 		width: auto;
 		padding: 9px 14px;
-		background: #dc2626;
+		background: #b4232d;
 		color: white;
-		border: none;
-		border-radius: 8px;
-		font-weight: bold;
+		border: 1px solid #d13a44;
+		border-radius: 6px;
+		font-weight: 650;
 		cursor: pointer;
 		white-space: nowrap;
+		box-shadow: none;
 	}
 
 	.danger-button:hover {
-		background: #b91c1c;
+		background: #c12b35;
 	}
 
 	.tables-area {
@@ -123,44 +173,115 @@ if ($tableName) {
 		width: 100%;
 		overflow-x: auto;
 		-webkit-overflow-scrolling: touch;
-		padding-bottom: 12px;
+		padding: 4px 0 14px;
+	}
+
+	#tables h2 {
+		margin: 18px 0 10px;
+		font-size: 14px;
+		font-weight: 650;
+		letter-spacing: 0.01em;
+		color: #f1f5f9;
 	}
 
 	table {
 		width: max-content;
 		min-width: 100%;
-		border-collapse: collapse;
-		margin-bottom: 30px;
-		background: #111827;
+		border-collapse: separate;
+		border-spacing: 0;
+		margin-bottom: 28px;
+		background: #0d1420;
+		border: 1px solid #243146;
+		border-radius: 8px;
+		overflow: hidden;
+		box-shadow: 0 10px 28px rgba(0, 0, 0, 0.14);
 	}
 
 	th,
 	td {
-		padding: 10px;
-		border: 1px solid #263244;
+		padding: 9px 12px;
+		border: 0;
+		border-right: 1px solid #202c3d;
+		border-bottom: 1px solid #202c3d;
 		text-align: left;
 		white-space: nowrap;
 		vertical-align: top;
+		font-size: 12px;
+	}
+
+	th:last-child,
+	td:last-child {
+		border-right: 0;
+	}
+
+	tr:last-child td {
+		border-bottom: 0;
 	}
 
 	th {
-		background: #0b1220;
-		color: #e5e7eb;
+		background: #101927;
+		color: #9eacc0;
 		position: sticky;
 		top: 0;
 		z-index: 2;
+		font-size: 11px;
+		font-weight: 650;
+		letter-spacing: 0.035em;
+		text-transform: uppercase;
 	}
 
 	td {
-		color: #d1d5db;
+		color: #cbd5e1;
+		background: #0d1420;
+		font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+	}
+
+	tr:hover td {
+		background: #101927;
 	}
 
 	.dangerous {
-		background-color: #dc2626;
+		background-color: #a61f29;
+		border-color: #c63741;
+		box-shadow: none;
 	}
 
 	.dangerous:hover {
-    	background-color: #600f0f; /* Darker red on hover */
+    	background-color: #bd2934;
+		border-color: #d7444e;
+	}
+
+	.buttons {
+    	display: flex;
+    	flex-wrap: wrap;
+		justify-content: flex-start;
+    	gap: 7px;
+		margin: 4px 0 10px;
+		padding: 12px;
+		background: #0d1420;
+		border: 1px solid #243146;
+		border-radius: 8px;
+	}
+
+	.buttons button {
+		width: fit-content;
+		min-height: 32px;
+		flex: 0 0 auto;
+		padding: 7px 12px;
+		cursor: pointer;
+		background: #131e2e;
+		border: 1px solid #2b3b52;
+		color: #b9c6d8;
+		box-shadow: none;
+		font-size: 11px;
+	}
+
+	.buttons button:hover {
+		padding: 7px 12px;
+		cursor: pointer;
+		background: #18263a;
+		border-color: #3a506f;
+		color: #f1f5f9;
 	}
 
 	@media (max-width: 1200px) {
@@ -176,28 +297,16 @@ if ($tableName) {
 
 		.forms {
 			grid-template-columns: 1fr;
+			gap: 10px;
 		}
-	}
 
-	.buttons {
-    	display: flex;
-    	flex-wrap: wrap;
-		justify-content: center;
-    	gap: 10px;      
-	}
+		.card {
+			padding: 14px;
+		}
 
-	.buttons button {
-		width: fit-content;
-		flex: 0 0 auto;
-		padding: 10px 20px;
-		cursor: pointer;
-		background-color: #334155;
-	}
-
-	.buttons button:hover {
-		padding: 10px 20px;
-		cursor: pointer;
-		background-color: #213b5f;
+		.buttons {
+			padding: 10px;
+		}
 	}
 </style>
 
