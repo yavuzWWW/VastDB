@@ -4,8 +4,8 @@
 	"Author": "Vast Hosting - Yavuz Semih Dogandemir"
 	},
 	"Admin":{
-		"username": "vasthosting",
-		"password": "$2y$10$pqknrTzsxQzj3hgiw52BceppajTN.UGcMl0T1m.uvtPQwArY4n3FC"
+		"username": "admin",
+		"password": "$2y$12$vSkVX.v.JJNBBE3fAcT0De8T5boqOI86XQ7iEwGTILb3LwBFacryi"
 	},
-	"Key": "$2y$10$qtIO1r2KQ81K5euvIB8RpOgZ1/nsLmkfzilJevLdkaYWWKXT6th.i"
+	"Key": "$2y$12$GcRjA/zJcN0bASAvGUE29ej.Vt/XAySmAUo6NWZXiy.jfL9xWJyGq"
 }
