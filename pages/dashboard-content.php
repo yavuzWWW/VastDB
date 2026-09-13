@@ -390,6 +390,27 @@ if ($tableName) {
 		</div>
 
 		<div class="card">
+			<h3>Replace Column</h3>
+
+			<form method="POST" action="handler/db_handler.php" target="_blank">
+				<input type="hidden" name="action" value="replace_column">
+
+				<select name="table_name" required>
+					<?php foreach ($tables as $table) { ?>
+						<option value="<?php echo htmlspecialchars($table); ?>">
+							<?php echo htmlspecialchars($table); ?>
+						</option>
+					<?php } ?>
+				</select>
+
+				<input type="text" name="column_name" placeholder="column name" required>
+				<input type="text" name="new_data" placeholder="value for every row">
+
+				<button type="submit">Replace Column</button>
+			</form>
+		</div>
+
+		<div class="card">
 			<h3>Delete Table</h3>
 			
 			<form method="POST" action="handler/delete_handler.php" target="_blank">

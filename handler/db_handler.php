@@ -29,6 +29,14 @@ if($action === 'update'){
 
 	newColumn($tableName, $column);
 
+}elseif($action === 'replace_column'){
+
+	$tableName = $_POST['table_name'] ?? '';
+	$column = $_POST['column_name'] ?? '';
+	$new_data = $_POST['new_data'] ?? '';
+
+	replaceColumn($tableName, $column, $new_data);
+
 }elseif($action ==='insert'){
 
 	//pull data 

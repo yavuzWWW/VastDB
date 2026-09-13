@@ -352,6 +352,37 @@ function update($tableName, $column, $id, $newData = ""){
 	writeJson("$baseDIR/data/$tableName/$column/data.vastdb", $data);
 }
 
+function replaceColumn($tableName, $column, $newData = ""){
+	global $baseDIR;
+
+	if (!tableExists($tableName)) {
+		die("VastDB Error: The table does not exist");
+	}
+
+	if (!columnExists($tableName, $column)) {
+		die("VastDB Error: The column does not exist");
+	}
+
+	//use another column as the source of real row IDs
+	$referenceColumn = null;
+	foreach (getColumns($tableName) as $tableColumn) {
+		if ($tableColumn !== $column) {
+			$referenceColumn = $tableColumn;
+			break;
+		}
+	}
+
+	$sourceColumn = $referenceColumn ?? $column;
+	$rowData = readJson("$baseDIR/data/$tableName/$sourceColumn/data.vastdb");
+	$newColumnData = [];
+
+	foreach (array_keys($rowData) as $id) {
+		$newColumnData[$id] = $newData;
+	}
+
+	writeJson("$baseDIR/data/$tableName/$column/data.vastdb", $newColumnData);
+}
+
 function pullColumn($tableName, $column){
 	global $baseDIR;
 		return readJson("$baseDIR/data/$tableName/$column/data.vastdb");
@@ -406,3 +437,4 @@ function searchAll(
 	return $results;
 }
 ?>
+
