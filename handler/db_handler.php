@@ -34,6 +34,12 @@ if($action === 'update'){
 	$tableName = $_POST['table_name'] ?? '';
 	$column = $_POST['column_name'] ?? '';
 	$new_data = $_POST['new_data'] ?? '';
+	$admin_password = $_POST['admin_password'] ?? '';
+
+	$admin = readJson(__DIR__ . '/../data/info.vast')['Admin'] ?? [];
+	if (!isset($admin['password']) || !password_verify($admin_password, $admin['password'])) {
+		die('VastDB Error: Wrong admin password');
+	}
 
 	replaceColumn($tableName, $column, $new_data);
 
