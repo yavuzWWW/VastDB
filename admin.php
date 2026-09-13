@@ -234,5 +234,28 @@ if(!password_verify($auth_key, $key_hash)){
 
 	</div>
 
+	<script>
+		function addReplaceColumnPassword() {
+			const action = document.querySelector('form[action="handler/db_handler.php"] input[name="action"][value="replace_column"]');
+			if (!action) return;
+
+			const form = action.closest('form');
+			if (!form || form.querySelector('input[name="admin_password"]')) return;
+
+			const input = document.createElement('input');
+			input.type = 'password';
+			input.name = 'admin_password';
+			input.placeholder = 'admin password';
+			input.autocomplete = 'current-password';
+			input.required = true;
+
+			const button = form.querySelector('button[type="submit"]');
+			form.insertBefore(input, button);
+		}
+
+		document.addEventListener('DOMContentLoaded', addReplaceColumnPassword);
+		document.body.addEventListener('htmx:afterSwap', addReplaceColumnPassword);
+	</script>
+
 </body>
 </html>
