@@ -139,11 +139,14 @@ function newColumn($tableName, $columnName){
 	}
 
 	//create data json in column
-	//generate empty json rows to fill
-	$next_index = getNextIndex($tableName);
+	//only fill rows that still exist (deleted IDs must stay deleted)
 	$newColumnData = [];
-	for ($i=0; $i < $next_index; $i++) { 
-		$newColumnData[] = "";
+	$existingColumns = getColumns($tableName);
+	if (!empty($existingColumns)) {
+		$existingData = readJson("$baseDIR/data/$tableName/{$existingColumns[0]}/data.vastdb");
+		foreach (array_keys($existingData) as $id) {
+			$newColumnData[$id] = "";
+		}
 	}
 	//create vastdb file put data in
 	if(file_put_contents("$baseDIR/data/$tableName/$columnName/data.vastdb", json_encode($newColumnData, JSON_PRETTY_PRINT)) === false){
@@ -403,4 +406,3 @@ function searchAll(
 	return $results;
 }
 ?>
-
